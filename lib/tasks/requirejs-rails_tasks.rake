@@ -11,6 +11,12 @@ require 'active_support/ordered_options'
 
 namespace :requirejs do
 
+  # This is a hack as described here for now
+  # https://github.com/jwhitley/requirejs-rails/issues/118
+  def ruby_rake_task(task)
+    Rake::Task[task].invoke
+  end
+
   # From Rails 3 assets.rake; we have the same problem:
   #
   # We are currently running with no explicit bundler group
